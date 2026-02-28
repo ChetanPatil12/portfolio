@@ -384,6 +384,79 @@
             color: var(--accent);
         }
 
+        /* Booking CTA */
+        .book-cta {
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .book-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #0a0a08;
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 4px 4px 0px #7abf10;
+            overflow: hidden;
+        }
+
+        .book-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #7abf10;
+        }
+
+        .book-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .arrow {
+            transition: transform 0.2s;
+        }
+
+        .book-btn-pulse {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            animation: btnPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes btnPulse {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .book-label {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .book-label::before {
+            content: '● ';
+            color: var(--accent);
+            font-size: 8px;
+        }
+
         @media (max-width: 600px) {
             .page {
                 padding: 40px 20px;
@@ -420,7 +493,7 @@
                 </div>
                 <div class="header-meta">
                     <div>Based in India</div>
-                    <div>Working Globally — US Clients</div>
+                    <div>Working Globally</div>
                     <div style="margin-top:12px;">
                         <span class="tag">AI Agents</span>
                         <span class="tag">Automation</span><br>
@@ -438,6 +511,26 @@
                 across insurance, furniture, and retail. Every project solves a real operational problem —
                 no fluff, no demos that don't ship.
             </p>
+
+            <div class="book-cta">
+                <a href="https://cal.com/chetan-patil-0f236w/60min" target="_blank" class="book-btn">
+                    <span class="book-btn-pulse"></span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Book a 60-Min Call
+                    <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+                <span class="book-label">Open for collaborations &amp; new projects</span>
+            </div>
         </header>
 
         <div class="section-label">Work History</div>
@@ -686,7 +779,22 @@
 
         <footer>
             <div>Chetan Patil — Work History</div>
-            <div><span>2024</span> → <span>2025</span> ongoing</div>
+            <div style="display:flex;align-items:center;gap:24px;">
+                <a href="https://cal.com/chetan-patil-0f236w/60min" target="_blank"
+                    style="display:inline-flex;align-items:center;gap:8px;background:var(--highlight);border:1px solid var(--accent);color:var(--accent);text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;transition:background 0.2s;"
+                    onmouseover="this.style.background='#2a3a10'" onmouseout="this.style.background='var(--highlight)'">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Book a Call
+                </a>
+                <span><span style="color:var(--accent)">2024</span> → <span style="color:var(--accent)">2025</span>
+                    ongoing</span>
+            </div>
         </footer>
 
     </div>
