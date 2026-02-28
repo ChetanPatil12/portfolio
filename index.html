@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chetan Patil — Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0a08;
+            --surface: #111110;
+            --border: #2a2a26;
+            --accent: #c8f060;
+            --accent2: #f0c060;
+            --text: #e8e8e0;
+            --muted: #6a6a60;
+            --highlight: #1a1f0f;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Mono', monospace;
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Noise overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.4;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 48px;
+            margin-bottom: 64px;
+            position: relative;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .name-block h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(56px, 10vw, 96px);
+            line-height: 0.9;
+            letter-spacing: 2px;
+            color: var(--text);
+        }
+
+        .name-block h1 span {
+            color: var(--accent);
+        }
+
+        .name-block .role {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: var(--muted);
+            margin-top: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-meta {
+            text-align: right;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        .header-meta .tag {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 2px 8px;
+            font-size: 10px;
+            margin-left: 4px;
+            margin-bottom: 4px;
+        }
+
+        .header-summary {
+            margin-top: 32px;
+            font-family: 'Instrument Serif', serif;
+            font-size: 17px;
+            color: var(--text);
+            max-width: 620px;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        /* Timeline section */
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .entry {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 32px;
+            margin-bottom: 56px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.5s forwards;
+        }
+
+        .entry:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .entry:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .entry:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .entry:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .entry:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .entry:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .entry:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .entry:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .entry:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .entry-time {
+            text-align: right;
+            padding-top: 4px;
+        }
+
+        .entry-time .period {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .entry-time .type-badge {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        .entry-connector {
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: -56px;
+            width: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+            margin-top: 7px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dot.dim {
+            background: var(--border);
+        }
+
+        .line {
+            flex: 1;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--border), transparent);
+        }
+
+        .entry-body {
+            padding: 20px 24px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .entry-body:hover {
+            border-color: var(--accent);
+        }
+
+        .entry-body::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 14px;
+            width: 24px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .entry-company {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 6px;
+        }
+
+        .entry-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .entry-desc {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .entry-desc p {
+            margin-bottom: 10px;
+        }
+
+        .entry-desc p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat {
+            display: inline-block;
+            background: var(--highlight);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px;
+            padding: 3px 10px;
+            margin-top: 12px;
+            margin-right: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .tags-row {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pill {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 3px 9px;
+        }
+
+        /* Skills section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .skill-cell {
+            padding: 20px 18px;
+            background: var(--surface);
+            border: 1px solid transparent;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .skill-cell:hover {
+            border-color: var(--accent);
+            background: var(--highlight);
+        }
+
+        .skill-cell .skill-name {
+            font-size: 12px;
+            color: var(--text);
+            letter-spacing: 0.5px;
+        }
+
+        .skill-cell .skill-cat {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 40px 20px;
+            }
+
+            .entry {
+                grid-template-columns: 80px 1fr;
+                gap: 16px;
+            }
+
+            .entry-connector {
+                left: 80px;
+            }
+
+            .header-top {
+                flex-direction: column;
+            }
+
+            .header-meta {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <header>
+            <div class="header-top">
+                <div class="name-block">
+                    <h1>CHETAN<br><span>PATIL</span></h1>
+                    <p class="role">AI Agent Builder & Automation Engineer</p>
+                </div>
+                <div class="header-meta">
+                    <div>Based in India</div>
+                    <div>Working Globally — US Clients</div>
+                    <div style="margin-top:12px;">
+                        <span class="tag">AI Agents</span>
+                        <span class="tag">Automation</span><br>
+                        <span class="tag">Python</span>
+                        <span class="tag">eCommerce</span><br>
+                        <span class="tag">2024 → Present</span>
+                    </div>
+                </div>
+            </div>
+            <p class="header-summary">
+                I started in web development, then discovered AI and automation in early 2025 — and went all in.
+                In under a year, I've shipped a live AI voice agent handling 2,000+ real business calls,
+                engineered multi-stage data pipelines for US eCommerce brands, built Python automations that
+                run silently in the background every single day, and delivered AI audits for companies
+                across insurance, furniture, and retail. Every project solves a real operational problem —
+                no fluff, no demos that don't ship.
+            </p>
+        </header>
+
+        <div class="section-label">Work History</div>
+
+        <div class="timeline">
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2024</div>
+                    <span class="type-badge">Freelance</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot dim"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">Various Clients</div>
+                    <div class="entry-title">Web Development Internships & Freelance</div>
+                    <div class="entry-desc">
+                        <p>Completed multiple internships and took on freelance clients in the web development space —
+                            building and delivering real projects, meeting client briefs, and learning to work
+                            independently without hand-holding. This is where I developed the discipline of shipping
+                            things that actually work.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">HTML/CSS</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">Frontend</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">Jan 2025</div>
+                    <span class="type-badge">Client Work</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">US-Based Business</div>
+                    <div class="entry-title">AI Inbound Receptionist Agent</div>
+                    <div class="entry-desc">
+                        <p>My first major AI project — and it went straight to production. Built a fully autonomous AI
+                            voice agent for a US business that handles their entire inbound call flow: answers questions
+                            from the company's own knowledge base, books appointments, collects project details, routes
+                            information to the right team member, and logs complaints. No human needed for routine
+                            calls. It has handled over 2,000 real calls and continues to run today.</p>
+                    </div>
+                    <span class="stat">2,000+ Calls Handled</span>
+                    <div class="tags-row">
+                        <span class="pill">AI Voice Agent</span>
+                        <span class="pill">Scheduling</span>
+                        <span class="pill">RAG</span>
+                        <span class="pill">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2025</div>
+                    <span class="type-badge">Freelance</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">Real Estate Client</div>
+                    <div class="entry-title">Social Media Automation for Realtor</div>
+                    <div class="entry-desc">
+                        <p>Designed and deployed a fully hands-off social media engine for a realtor client. Every day,
+                            the system automatically generates a fresh AI image and matching caption, then publishes it
+                            to their social accounts — zero manual effort required. What used to take 20–30 minutes of
+                            daily work now runs completely on autopilot.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">AI Image Gen</span>
+                        <span class="pill">Social Automation</span>
+                        <span class="pill">Make / n8n</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2025</div>
+                    <span class="type-badge">Full-Time Remote</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">NOVAEO — US eCommerce Brand</div>
+                    <div class="entry-title">AI & Automation Engineer</div>
+                    <div class="entry-desc">
+                        <p><strong style="color:var(--text)">Database Overhaul:</strong> Walked into a database that was
+                            barely functional — riddled with duplicate entries, misnamed fields, and broken variables
+                            accumulated over years of patchy data entry. Audited the entire structure, built targeted
+                            automation scripts to catch and resolve inconsistencies at scale, and finished what
+                            automation couldn't with careful manual review. Took it from unusable to reliable.</p>
+                        <p><strong style="color:var(--text)">Supplier Quote Intake Pipeline:</strong> The company was
+                            receiving dozens of supplier quotes from China daily — arriving as PDFs, Excel files, and
+                            CSVs in wildly inconsistent formats. Built an intelligent extraction pipeline that reads
+                            each incoming email, identifies the correct product codes regardless of formatting
+                            variation, parses the quote data accurately, and stores it cleanly in the database.
+                            Significant engineering effort went into handling the unpredictability of real-world
+                            supplier documents.</p>
+                        <p><strong style="color:var(--text)">Automated Order Sync (SellerLegends → Database):</strong>
+                            Built a production-grade Python automation hosted on GitHub Actions that wakes up every
+                            morning, logs into SellerLegends, downloads the latest Amazon order data, and syncs it into
+                            the company's internal database — keeping everything current without anyone lifting a
+                            finger. Extended the same architecture to handle a second daily report serving a separate
+                            operational purpose.</p>
+                        <p><strong style="color:var(--text)">Live Tariff Monitoring System:</strong> US–China tariffs
+                            change frequently and unpredictably — and for an Amazon seller sourcing from China, a missed
+                            tariff update directly hits margins. Built an automated monitoring system that watches for
+                            tariff changes across the company's product catalog, verifies updates, and writes them to
+                            the database in real time. One less thing the team needs to manually track.</p>
+                        <p><strong style="color:var(--text)">Ad Creative & New Product Launches:</strong> Produced a
+                            range of AI-generated ad creatives for new product lines — experimenting with different
+                            visual styles, angles, and audience personas to build out launch-ready creative libraries
+                            without the cost of a full creative team.</p>
+                        <p><strong style="color:var(--text)">TikTok UGC Automation (In Progress):</strong> Architected
+                            the early-stage infrastructure for a multi-account TikTok content engine — designed to
+                            generate and post UGC-style product videos at volume across multiple accounts to drive
+                            organic reach and top-of-funnel awareness.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">Python</span>
+                        <span class="pill">GitHub Actions</span>
+                        <span class="pill">Email Parsing</span>
+                        <span class="pill">PDF/CSV/Excel</span>
+                        <span class="pill">Amazon / SellerLegends</span>
+                        <span class="pill">Database Automation</span>
+                        <span class="pill">Tariff Monitoring</span>
+                        <span class="pill">AI Ad Creative</span>
+                        <span class="pill">TikTok Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2025</div>
+                    <span class="type-badge">Agency Contract</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">Highlane Partners — Furniture Brand Project</div>
+                    <div class="entry-title">AI Image Editing & Workflow Automation</div>
+                    <div class="entry-desc">
+                        <p>Brought in by Highlane Partners to build a bespoke AI-powered image workflow platform for a
+                            furniture brand. The brief was complex: users needed to upload product photography, direct
+                            AI edits to the images, review and approve outputs, and feed approved assets into downstream
+                            workflows — all in one system. Delivered a cohesive, working solution that handled the full
+                            creative review cycle from upload to approval.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">AI Image Workflow</span>
+                        <span class="pill">Agency Work</span>
+                        <span class="pill">Product Imagery</span>
+                        <span class="pill">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2025</div>
+                    <span class="type-badge">Consulting</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line" style="background:none;"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">Insurance Company — via Consultant</div>
+                    <div class="entry-title">AI Audit & Agent Architecture</div>
+                    <div class="entry-desc">
+                        <p>Partnered with an independent consultant to conduct a thorough AI readiness audit for an
+                            insurance company — mapping their current operations, identifying where AI could create
+                            meaningful efficiency gains, and designing a practical implementation roadmap. Delivered an
+                            architecture centered on 3 core AI agents, each targeting a distinct operational bottleneck,
+                            with supporting automation workflows connecting them. Gave the client a clear, actionable
+                            picture of where and how to adopt AI — not just a report, but a buildable plan.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">AI Audit</span>
+                        <span class="pill">Multi-Agent Systems</span>
+                        <span class="pill">Insurance</span>
+                        <span class="pill">Consulting</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-label" style="margin-top:64px;">Core Skills</div>
+
+        <div class="skills-grid">
+            <div class="skill-cell">
+                <div class="skill-cat">Agents</div>
+                <div class="skill-name">AI Voice & Chat Agents</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Automation</div>
+                <div class="skill-name">Python Scripting & Pipelines</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Data</div>
+                <div class="skill-name">PDF / Excel / CSV Parsing</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Infrastructure</div>
+                <div class="skill-name">GitHub Actions (Hosted Crons)</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">eCommerce</div>
+                <div class="skill-name">Amazon / SellerLegends</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Creative</div>
+                <div class="skill-name">AI Ad Creative & Image Gen</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Platforms</div>
+                <div class="skill-name">Make / n8n / Zapier</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Social</div>
+                <div class="skill-name">TikTok & Social Automation</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Strategy</div>
+                <div class="skill-name">AI Audits & Roadmapping</div>
+            </div>
+        </div>
+
+        <footer>
+            <div>Chetan Patil — Work History</div>
+            <div><span>2024</span> → <span>2025</span> ongoing</div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
