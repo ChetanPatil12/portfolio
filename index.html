@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chetan Patil — Portfolio</title>
+    <title>Chetan Patil — AI Engineer</title>
+    <meta name="description"
+        content="Chetan Patil, AI engineer building backend and LLM systems: conversational agents, hybrid search, API integrations and data pipelines.">
+    <meta property="og:title" content="Chetan Patil — AI Engineer">
+    <meta property="og:description"
+        content="Backend and LLM systems: conversational agents, hybrid search, API integrations and data pipelines.">
+    <meta property="og:type" content="website">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet">
@@ -368,6 +374,34 @@
             margin-bottom: 6px;
         }
 
+        /* How I build */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
+            background: var(--border);
+        }
+
+        .principle {
+            padding: 22px 22px;
+            background: var(--surface);
+        }
+
+        .principle .principle-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .principle p {
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
         footer {
             margin-top: 80px;
             padding-top: 32px;
@@ -489,27 +523,31 @@
             <div class="header-top">
                 <div class="name-block">
                     <h1>CHETAN<br><span>PATIL</span></h1>
-                    <p class="role">AI Agent Builder & Automation Engineer</p>
+                    <p class="role">AI Engineer · Backend &amp; LLM Systems</p>
                 </div>
                 <div class="header-meta">
                     <div>Based in India</div>
-                    <div>Working Globally</div>
+                    <div>Remote · Open to Relocation</div>
                     <div style="margin-top:12px;">
-                        <span class="tag">AI Agents</span>
-                        <span class="tag">Automation</span><br>
+                        <span class="tag">LLM Systems</span>
+                        <span class="tag">TypeScript</span><br>
                         <span class="tag">Python</span>
-                        <span class="tag">eCommerce</span><br>
+                        <span class="tag">Backend APIs</span><br>
                         <span class="tag">2024 → Present</span>
                     </div>
                 </div>
             </div>
             <p class="header-summary">
-                I started in web development, then discovered AI and automation in early 2025 — and went all in.
-                In under a year, I've shipped a live AI voice agent handling 2,000+ real business calls,
-                engineered multi-stage data pipelines for US eCommerce brands, built Python automations that
-                run silently in the background every single day, and delivered AI audits for companies
-                across insurance, furniture, and retail. Every project solves a real operational problem —
-                no fluff, no demos that don't ship.
+                AI engineer with 1.5+ years shipping production LLM systems and backend integrations for
+                businesses in the US and Singapore. I've built SMS-driven agents that replaced manual operations
+                roles, CRM-to-CRM syncs over REST APIs, Python ETL pipelines that run on schedule every day, and a
+                voice agent that has handled 2,000+ real calls. Right now I'm the sole engineer on an AI
+                property-search platform, owning it from architecture through launch.
+            </p>
+            <p class="header-summary" style="margin-top:16px;">
+                I use AI coding assistants like Claude Code to build faster. The engineering calls stay with me:
+                system design, data models, and deciding where the LLM gets to choose and where the database is the
+                source of truth.
             </p>
 
             <div class="book-cta">
@@ -536,6 +574,58 @@
         <div class="section-label">Work History</div>
 
         <div class="timeline">
+
+            <div class="entry">
+                <div class="entry-time">
+                    <div class="period">2026 → Present</div>
+                    <span class="type-badge">Founding Engineer</span>
+                </div>
+                <div class="entry-connector">
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-company">Early-Stage Proptech Startup — Singapore (Stealth)</div>
+                    <div class="entry-title">AI Property Search Platform</div>
+                    <div class="entry-desc">
+                        <p>Sole engineer building an AI-powered property search platform for Singapore, working
+                            directly with the founder from architecture through launch. Instead of another listings
+                            portal, it's a conversational agent that lives in WhatsApp, the app people in Singapore
+                            already use every day.</p>
+                        <p><strong style="color:var(--text)">Structured conversation, not a free-form chatbot:</strong>
+                            The dialogue manager runs on slot-filling (rent or buy, tenure, budget, bedrooms, districts
+                            or MRT lines, move-in date, residency status). That keeps every search query deterministic
+                            and testable, where an open-ended chat would leave it guessing.</p>
+                        <p><strong style="color:var(--text)">Hybrid search with commute awareness:</strong> Combines
+                            structured SQL filters with embedding similarity, plus a geo engine built on OneMap and LTA
+                            public data so people can filter by real commute, not just district.</p>
+                        <p><strong style="color:var(--text)">Zero hallucinated listing data:</strong> Every price and
+                            lease figure comes from a database read, never from model output, and everything shown is
+                            timestamped.</p>
+                        <p><strong style="color:var(--text)">Built for WhatsApp's constraints:</strong> Uses Flows for
+                            multi-field intake, list messages, reply buttons and carousel templates to turn typing into
+                            taps, which cuts message volume under per-message billing.</p>
+                        <p><strong style="color:var(--text)">Compliance enforced in code:</strong> The agent handles
+                            search, eligibility maths and viewing scheduling, and routes negotiation to licensed agents
+                            in line with Singapore's Estate Agents Act. PDPA consent is captured at onboarding.</p>
+                        <p>Five-layer architecture: WhatsApp channel (Cloud API webhooks, Flows endpoint, template
+                            sender) → dialogue &amp; session → matching → listing data → agent handoff. Next up: a
+                            preference reranker trained on shortlist/skip signals, saved-search alerts, and tracing and
+                            evaluation for agent quality.</p>
+                    </div>
+                    <div class="tags-row">
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">Bun</span>
+                        <span class="pill">Vite</span>
+                        <span class="pill">Supabase / PostgreSQL</span>
+                        <span class="pill">WhatsApp Cloud API</span>
+                        <span class="pill">Hybrid Search</span>
+                        <span class="pill">Embeddings</span>
+                        <span class="pill">Geo / OneMap</span>
+                        <span class="pill">Conversational AI</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="entry">
                 <div class="entry-time">
@@ -780,49 +870,86 @@
 
         </div>
 
+        <div class="section-label" style="margin-top:64px;">How I Build</div>
+
+        <div class="principles">
+            <div class="principle">
+                <div class="principle-title">Design before code</div>
+                <p>I work out the architecture, data model and failure modes first. The AI assistant can write code
+                    faster than I can, but it doesn't decide what gets built.</p>
+            </div>
+            <div class="principle">
+                <div class="principle-title">AI-assisted, not AI-authored</div>
+                <p>I use Claude Code to implement, refactor and explore unfamiliar APIs quickly. Then I read and
+                    review what it produces, and I own whatever ships.</p>
+            </div>
+            <div class="principle">
+                <div class="principle-title">Ground the model</div>
+                <p>LLMs handle language and databases handle facts. Prices, schedules and customer records always
+                    come from a read, never from model output.</p>
+            </div>
+            <div class="principle">
+                <div class="principle-title">Deterministic where it matters</div>
+                <p>Slot-filling, structured outputs, tool calling and explicit human handoffs keep agent behaviour
+                    predictable, so it can be debugged and tested.</p>
+            </div>
+        </div>
+
         <div class="section-label" style="margin-top:64px;">Core Skills</div>
 
         <div class="skills-grid">
             <div class="skill-cell">
-                <div class="skill-cat">Agents</div>
-                <div class="skill-name">AI Voice & Chat Agents</div>
+                <div class="skill-cat">Languages</div>
+                <div class="skill-name">TypeScript · Python · SQL · JavaScript</div>
             </div>
             <div class="skill-cell">
-                <div class="skill-cat">Automation</div>
-                <div class="skill-name">Python Scripting & Pipelines</div>
+                <div class="skill-cat">Backend</div>
+                <div class="skill-name">REST API Design &amp; Webhooks</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Database</div>
+                <div class="skill-name">PostgreSQL / Supabase</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Runtime &amp; Tooling</div>
+                <div class="skill-name">Bun · Vite · GitHub Actions</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">LLM Systems</div>
+                <div class="skill-name">Agents, Tool Calling, Structured Output</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Retrieval</div>
+                <div class="skill-name">RAG, Embeddings &amp; Hybrid Search</div>
+            </div>
+            <div class="skill-cell">
+                <div class="skill-cat">Dialogue</div>
+                <div class="skill-name">Slot-Filling Conversation Design</div>
             </div>
             <div class="skill-cell">
                 <div class="skill-cat">Data</div>
-                <div class="skill-name">PDF / Excel / CSV Parsing</div>
+                <div class="skill-name">ETL, PDF / Excel / CSV Parsing, Dedup</div>
             </div>
             <div class="skill-cell">
-                <div class="skill-cat">Infrastructure</div>
-                <div class="skill-name">GitHub Actions (Hosted Crons)</div>
+                <div class="skill-cat">Messaging &amp; Voice</div>
+                <div class="skill-name">WhatsApp Cloud API · Twilio · Retell AI</div>
             </div>
             <div class="skill-cell">
-                <div class="skill-cat">eCommerce</div>
-                <div class="skill-name">Amazon / SellerLegends</div>
+                <div class="skill-cat">Integrations</div>
+                <div class="skill-name">AccuLynx · GoHighLevel · SellerLegends</div>
             </div>
             <div class="skill-cell">
-                <div class="skill-cat">Creative</div>
-                <div class="skill-name">AI Ad Creative & Image Gen</div>
+                <div class="skill-cat">Workflow Tools</div>
+                <div class="skill-name">n8n / Make</div>
             </div>
             <div class="skill-cell">
-                <div class="skill-cat">Platforms</div>
-                <div class="skill-name">Make / n8n / Zapier</div>
-            </div>
-            <div class="skill-cell">
-                <div class="skill-cat">Social</div>
-                <div class="skill-name">TikTok & Social Automation</div>
-            </div>
-            <div class="skill-cell">
-                <div class="skill-cat">Strategy</div>
-                <div class="skill-name">AI Audits & Roadmapping</div>
+                <div class="skill-cat">Dev Workflow</div>
+                <div class="skill-name">AI-Assisted Development (Claude Code)</div>
             </div>
         </div>
 
         <footer>
-            <div>Chetan Patil — Work History</div>
+            <div>Chetan Patil — AI Engineer</div>
             <div style="display:flex;align-items:center;gap:24px;">
                 <a href="https://cal.com/chetan-patil-0f236w/60min" target="_blank"
                     style="display:inline-flex;align-items:center;gap:8px;background:var(--highlight);border:1px solid var(--accent);color:var(--accent);text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;transition:background 0.2s;"
@@ -836,8 +963,7 @@
                     </svg>
                     Book a Call
                 </a>
-                <span><span style="color:var(--accent)">2024</span> → <span style="color:var(--accent)">2025</span>
-                    ongoing</span>
+                <span><span style="color:var(--accent)">2024</span> → <span style="color:var(--accent)">Present</span></span>
             </div>
         </footer>
 
